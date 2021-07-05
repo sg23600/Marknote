@@ -7,9 +7,10 @@ import { refreshTokenSetup } from "../utils/refreshToken"
 const clientId =
   "908989225319-6kfd36mrjlkvg0o6225q856qleedam82.apps.googleusercontent.com"
 
-const LoginHooks = () => {
+const LoginHooks = ({ setLogIn }) => {
   const onSuccess = (res) => {
     console.log("Login successful, current user: ", res.profileObj)
+    setLogIn(true)
     alert(`Logged in!! Welcome ${res.profileObj.name}`)
     refreshTokenSetup(res)
   }
@@ -36,14 +37,7 @@ const LoginHooks = () => {
         alignItems: "center",
       }}
     >
-      <img
-        // style={{ height: "1rem", width: "1rem" }}
-        // height="25px"
-        // width="25px"
-        src="google.png"
-        alt="google"
-        className="icon"
-      ></img>
+      <img src="google.png" alt="google" className="icon"></img>
       <p>Sign in</p>
     </div>
   )

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom"
 import { ReactComponent as CloseMenu } from "./x.svg"
 import { ReactComponent as MenuIcon } from "./menu.svg"
 import LoginHooks from "../LoginHooks"
+import LogoutHooks from "../LogoutHooks"
 
 import "./Navbar.scss"
 
@@ -18,6 +19,9 @@ const Navbar = () => {
       setNavbar(false)
     }
   }
+
+  const [logIn, setLogIn] = useState(false)
+
   window.addEventListener("scroll", changeBackground)
   return (
     <div className="main">
@@ -63,7 +67,11 @@ const Navbar = () => {
               className="nav-item"
               activeClassName="nav-active"
             >
-              <LoginHooks />
+              {logIn ? (
+                <LogoutHooks setLogIn={setLogIn} />
+              ) : (
+                <LoginHooks setLogIn={setLogIn} />
+              )}
             </NavLink>
           </li>
         </ul>
