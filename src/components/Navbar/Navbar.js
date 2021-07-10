@@ -7,7 +7,7 @@ import LogoutHooks from "../LogoutHooks"
 
 import "./Navbar.scss"
 
-const Navbar = () => {
+const Navbar = ({ logIn, setUser, setLogIn }) => {
   const [click, setClick] = useState(false)
   const [navbar, setNavbar] = useState(false)
   const handleClick = () => setClick(!click)
@@ -19,8 +19,6 @@ const Navbar = () => {
       setNavbar(false)
     }
   }
-
-  const [logIn, setLogIn] = useState(false)
 
   window.addEventListener("scroll", changeBackground)
   return (
@@ -61,18 +59,25 @@ const Navbar = () => {
             className={navbar ? "option active" : "option"}
             onClick={closeMobileMenu}
           >
-            <NavLink
-              exact
-              to="/signin"
-              className="nav-item"
-              activeClassName="nav-active"
-            >
-              {logIn ? (
+            {logIn ? (
+              <NavLink
+                exact
+                to="/"
+                className="nav-item"
+                activeClassName="nav-active"
+              >
                 <LogoutHooks setLogIn={setLogIn} />
-              ) : (
-                <LoginHooks setLogIn={setLogIn} />
-              )}
-            </NavLink>
+              </NavLink>
+            ) : (
+              <NavLink
+                exact
+                to="/signin"
+                className="nav-item"
+                activeClassName="nav-active"
+              >
+                <LoginHooks setLogIn={setLogIn} setUser={setUser} />
+              </NavLink>
+            )}
           </li>
         </ul>
         <div className="mobile-menu" onClick={handleClick}>

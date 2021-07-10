@@ -7,10 +7,19 @@ import { refreshTokenSetup } from "../utils/refreshToken"
 const clientId =
   "908989225319-6kfd36mrjlkvg0o6225q856qleedam82.apps.googleusercontent.com"
 
-const LoginHooks = ({ setLogIn }) => {
-  const onSuccess = (res) => {
-    console.log("Login successful, current user: ", res.profileObj)
-    setLogIn(true)
+const LoginHooks = ({ setLogIn, setUser }) => {
+  const onSuccess = async (res) => {
+    // console.log("Login successful, current user: ", res.profileObj)
+    const data = res.profileObj
+    await setLogIn(true)
+    await setUser({
+      email: data.email,
+      familyName: data.familyName,
+      givenName: data.givenName,
+      googleId: data.googleId,
+      imageUrl: data.imageUrl,
+      name: data.name,
+    })
     alert(`Logged in!! Welcome ${res.profileObj.name}`)
     refreshTokenSetup(res)
   }

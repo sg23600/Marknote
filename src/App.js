@@ -1,15 +1,28 @@
 import Navbar from "./components/Navbar/Navbar"
 import { Route, Switch } from "react-router-dom"
+import React, { useState, useEffect } from "react"
 import About from "./containers/About"
-import Signin from "./containers/Signin/Signin"
-import Register from "./containers/Register/Register"
+import Notes from "./containers/Notes/Notes"
 
 import "./App.scss"
 
 const App = () => {
+  const [user, setUser] = useState({
+    email: "",
+    familyName: "",
+    givenName: "",
+    googleId: "",
+    imageUrl: "",
+    name: "",
+  })
+  const [logIn, setLogIn] = useState(false)
+
+  useEffect(() => {
+    console.log("USER =>\n", user)
+  }, [user])
   return (
     <div className="App">
-      <Navbar />
+      <Navbar logIn={logIn} setUser={setUser} setLogIn={setLogIn} />
       <Switch>
         <Route exact path="/">
           <About />
@@ -19,7 +32,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/signin">
-          <Signin />
+          <Notes />
         </Route>
         <Route component={About} />
       </Switch>
