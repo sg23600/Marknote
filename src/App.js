@@ -20,6 +20,7 @@ const App = () => {
   useEffect(() => {
     console.log("USER =>\n", user)
   }, [user])
+
   return (
     <div className="App">
       <Navbar logIn={logIn} setUser={setUser} setLogIn={setLogIn} />
@@ -31,8 +32,8 @@ const App = () => {
           <h1>CONTACT</h1>
         </Route>
 
-        <Route exact path="/signin">
-          <Notes />
+        <Route exact path="/notes">
+          <Notes user={user} />
         </Route>
         <Route component={About} />
       </Switch>

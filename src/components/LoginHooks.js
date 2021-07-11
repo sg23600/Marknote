@@ -1,5 +1,7 @@
 import React from "react"
 import { useGoogleLogin } from "react-google-login"
+import { Redirect } from "react-router-dom"
+import axios from "axios"
 
 // refresh token
 import { refreshTokenSetup } from "../utils/refreshToken"
@@ -20,6 +22,10 @@ const LoginHooks = ({ setLogIn, setUser }) => {
       imageUrl: data.imageUrl,
       name: data.name,
     })
+    await axios
+      .post("http://localhost:5000/user/signin", data)
+      .then((response) => console.log("Sign In frontend response=", response))
+    // <Redirect to="/login" />
     alert(`Logged in!! Welcome ${res.profileObj.name}`)
     refreshTokenSetup(res)
   }
@@ -38,17 +44,20 @@ const LoginHooks = ({ setLogIn, setUser }) => {
   })
 
   return (
-    <div
-      onClick={signIn}
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <img src="google.png" alt="google" className="icon"></img>
-      <p>Sign in</p>
-    </div>
+    <>
+      <Redirect to="/" />
+      <div
+        onClick={signIn}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <img src="google.png" alt="google" className="icon"></img>
+        <p>Sign in</p>
+      </div>
+    </>
   )
 }
 export default LoginHooks

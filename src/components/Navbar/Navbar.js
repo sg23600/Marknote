@@ -62,7 +62,7 @@ const Navbar = ({ logIn, setUser, setLogIn }) => {
             {logIn ? (
               <NavLink
                 exact
-                to="/"
+                to="/signin"
                 className="nav-item"
                 activeClassName="nav-active"
               >
