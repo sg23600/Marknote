@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import axios from "axios"
 import Note from "../../components/Note/Note"
 import "./Notes.scss"
@@ -29,6 +30,11 @@ const Notes = ({ user }) => {
   return (
     <div>
       <h1>{user.givenName}'s Notes</h1>
+      <div className="actions">
+        <Link exact to="/notes/new">
+          <button>Add New</button>
+        </Link>
+      </div>
       <div className="notes-container">
         {dummy.map((note, i) => {
           return (

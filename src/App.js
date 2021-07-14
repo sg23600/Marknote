@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom"
 import React, { useState, useEffect } from "react"
 import About from "./containers/About"
 import Notes from "./containers/Notes/Notes"
+import Newnote from "./containers/Newnote/Newnote"
 
 import "./App.scss"
 
@@ -31,7 +32,9 @@ const App = () => {
         <Route exact path="/contact">
           <h1>CONTACT</h1>
         </Route>
-
+        <Route exact path="/notes/new">
+          <Newnote />
+        </Route>
         <Route exact path="/notes">
           <Notes user={user} />
         </Route>
