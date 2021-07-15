@@ -27,6 +27,14 @@ const Newnote = () => {
             aria-describedby="comment-desc"
             required
           ></textarea>
+          <label for="note" className="f6 b db mb2">
+            Visibility <span className="star normal black-60">*</span>
+          </label>
+          <select name="Visibility" className="dropdown">
+            <option value="private">Private</option>
+            <option value="public">Public</option>
+          </select>
+          <br />
           <a
             className="f6 link dim br-pill ph3 pv2 mb2 dib white bg-dark-blue"
             href="#0"

@@ -18,9 +18,9 @@ const App = () => {
   })
   const [logIn, setLogIn] = useState(false)
 
-  useEffect(() => {
-    console.log("USER =>\n", user)
-  }, [user])
+  // useEffect(() => {
+  //   console.log("USER =>\n", user)
+  // }, [user])
 
   return (
     <div className="App">

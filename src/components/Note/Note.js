@@ -1,7 +1,7 @@
 import React from "react"
 import "./Note.scss"
 
-const Note = ({ id, title, body, date }) => {
+const Note = ({ title, body, date }) => {
   console.log(date)
   return (
     <article className="center mw5 mw6-ns hidden shadow-5 br4 mv4">
