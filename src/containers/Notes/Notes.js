@@ -32,7 +32,7 @@ const Notes = ({ user }) => {
     axios
       .post("http://localhost:5000/notes", { googleId: user.googleId })
       .then((response) => {
-        console.log(response.data)
+        console.log(typeof response.data[0].lastEdited)
         setNotes(response.data)
       })
   }, [user])
@@ -51,7 +51,7 @@ const Notes = ({ user }) => {
               key={note.id}
               title={note.title}
               body={note.body}
-              date={note.lastUpdated}
+              date={note.lastEdited}
             />
           )
         })}

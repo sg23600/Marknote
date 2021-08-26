@@ -8,7 +8,8 @@ const Note = ({ title, body, date }) => {
       <h1 className="f4 bg-light-blue white mv0 pv2 ba b--dashed bw3 ph3">
         <div className="card-head near-black">
           <p>{title}</p>
-          <small>{date}</small>
+          <br />
+          <small>{date.slice(0,10)}</small>
         </div>
       </h1>
       <div className="pa3 bg-washed-blue">

@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar/Navbar"
 import { Route, Switch } from "react-router-dom"
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import About from "./containers/About"
 import Notes from "./containers/Notes/Notes"
 import Newnote from "./containers/Newnote/Newnote"
