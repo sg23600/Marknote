@@ -33,7 +33,7 @@ const App = () => {
           <h1>CONTACT</h1>
         </Route>
         <Route exact path="/notes/new">
-          <Newnote />
+          <Newnote user={user}/>
         </Route>
         <Route exact path="/notes">
           <Notes user={user} />
