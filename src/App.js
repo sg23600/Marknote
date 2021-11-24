@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import About from "./containers/About"
 import Notes from "./containers/Notes/Notes"
 import Newnote from "./containers/Newnote/Newnote"
+import Editnote from "./containers/Editnote/Editnote"
 
 import "./App.scss"
 
@@ -22,6 +23,9 @@ const App = () => {
   //   console.log("USER =>\n", user)
   // }, [user])
 
+
+  
+
   return (
     <div className="App">
       <Navbar logIn={logIn} setUser={setUser} setLogIn={setLogIn} />
@@ -33,7 +37,10 @@ const App = () => {
           <h1>CONTACT</h1>
         </Route>
         <Route exact path="/notes/new">
-          <Newnote user={user}/>
+          <Newnote user={user} />
+        </Route>
+        <Route exact path="/notes/edit">
+          <Editnote user={user} />
         </Route>
         <Route exact path="/notes">
           <Notes user={user} />
