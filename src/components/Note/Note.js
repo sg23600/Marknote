@@ -6,10 +6,17 @@ const Note = ({ title, body, date }) => {
   return (
     <article className="center mw5 mw6-ns hidden shadow-5 br4 mv4">
       <h1 className="f4 bg-light-blue white mv0 pv2 ba b--dashed bw3 ph3">
+        <button class="btn edit">
+          <i class="fa fa-edit"></i>
+        </button>
+
+        <button class="btn del">
+          <i class="fa fa-trash"></i>
+        </button>
+
         <div className="card-head near-black">
           <p>{title}</p>
           <br />
-          <small>{date.slice(0,10)}</small>
         </div>
       </h1>
       <div className="pa3 bg-washed-blue">

@@ -1,5 +1,19 @@
 .card-head {
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: baseline;
+}
+
+button {
+  margin: 2px 5px;
+}
+
+.del {
+  color: red;
+  // border-style: space;?
+}
+.edit {
+  color: rgb(80, 80, 84);
+  // border-style: center;
+
 }

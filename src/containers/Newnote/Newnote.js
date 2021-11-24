@@ -1,8 +1,11 @@
 import React, { useState } from "react"
+import { useHistory } from "react-router-dom"
 import axios from "axios"
 import "./Newnote.scss"
 
 const Newnote = ({ user }) => {
+  const history = useHistory()
+
   const [form, setForm] = useState({
     title: "",
     body: "",
@@ -17,16 +20,18 @@ const Newnote = ({ user }) => {
 
   const onSubmit = () => {
     console.log(form)
-    axios.post("http://localhost:5000/notes/new", {
-      googleId: user.googleId,
-      title: form.title,
-      body: form.body,
-    })
-    // .then((response) => {
-    //   console.log(response)
-    // })
-    console.log("submitted")
+    axios
+      .post("http://localhost:5000/notes/new", {
+        googleId: user.googleId,
+        title: form.title,
+        body: form.body,
+      })
+      .then(() => {
+        history.push("/notes")
+        console.log("new note added!")
+      })
   }
+
   return (
     <div className="">
       <form className="pa4 black-80">
