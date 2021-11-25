@@ -1,11 +1,12 @@
 import React, { useState } from "react"
 // import { useHistory } from "react-router-dom"
 // import axios from "axios"
+import { Link } from "react-router-dom"
 import "./Editnote.scss"
 
 const Editnote = ({ note }) => {
   // const history = useHistory()
- 
+
   const [form, setForm] = useState({
     title: note.title,
     body: note.body,
@@ -80,6 +81,15 @@ const Editnote = ({ note }) => {
           >
             Submit
           </a>
+          <br />
+          <Link exact to="/notes">
+            <a
+              className="f6 link dim br-pill ph3 pv2 mb2 dib white bg-light-blue"
+              href="/"
+            >
+              Go back
+            </a>
+          </Link>
         </div>
       </form>
     </div>
