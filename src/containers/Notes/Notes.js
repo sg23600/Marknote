@@ -4,8 +4,7 @@ import axios from "axios"
 import Note from "../../components/Note/Note"
 import "./Notes.scss"
 
-
-const Notes = ({ user }) => {
+const Notes = ({ user, note, editNote }) => {
   const [notes, setNotes] = useState([])
 
   useEffect(() => {
@@ -28,9 +27,12 @@ const Notes = ({ user }) => {
         {notes.map((note, i) => {
           return (
             <Note
+              googleId={user.googleId}
               key={note.id}
               title={note.title}
               body={note.body}
+              note={note}
+              editNote={editNote}
               // date={note.lastEdited}
             />
           )

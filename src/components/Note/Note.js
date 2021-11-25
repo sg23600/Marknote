@@ -1,14 +1,31 @@
 import React from "react"
 import { Link } from "react-router-dom"
+// import { Route, Switch } from "react-router-dom"
+// import Editnote from "../../containers/Editnote/Editnote"
+
 import "./Note.scss"
 
-const Note = ({ title, body }) => {
-  // console.log(date)
+const Note = ({ googleId, title, body, note, editNote }) => {
+  // useEffect(() => {
+  //   if (editNote) {
+  //     console.log("rendering...")
+  //     editNote(googleId, title, body)
+  //     // console.log(note)
+  //   }
+  // }, [googleId, title, body])
+
+  const onClick = () => {
+    editNote(googleId, title, body)
+    console.log(note)
+  }
+
   return (
     <article className="center mw5 mw6-ns hidden shadow-5 br4 mv4">
       <h1 className="f4 bg-light-blue white mv0 pv2 ba b--dashed bw3 ph3">
+        {/* edit note */}
+
         <Link exact to="/notes/edit">
-          <button className="btn edit">
+          <button onClick={onClick} className="btn edit">
             <i className="fa fa-edit"></i>
           </button>
         </Link>

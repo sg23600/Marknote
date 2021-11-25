@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar/Navbar"
 import { Route, Switch } from "react-router-dom"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import About from "./containers/About"
 import Notes from "./containers/Notes/Notes"
 import Newnote from "./containers/Newnote/Newnote"
@@ -23,8 +23,22 @@ const App = () => {
   //   console.log("USER =>\n", user)
   // }, [user])
 
+  const [note, setNote] = useState({
+    googleId: 0,
+    title: "",
+    body: "",
+  })
+  const editNote = (a, b, c) => {
+    setNote({
+      googleId: a,
+      title: b,
+      body: c,
+    })
+  }
 
-  
+  useEffect(() => {
+    console.log("NOTE =>\n", note)
+  }, [note])
 
   return (
     <div className="App">
@@ -40,11 +54,17 @@ const App = () => {
           <Newnote user={user} />
         </Route>
         <Route exact path="/notes/edit">
-          <Editnote user={user} />
+          <Editnote note={note} />
         </Route>
         <Route exact path="/notes">
-          <Notes user={user} />
+          <Notes user={user} note={note} editNote={editNote} />
         </Route>
+        {/* <Route exact path="/notes/edit">
+          <Editnote
+            note={note}
+            // editNote={editNote}
+          />
+        </Route> */}
         <Route component={About} />
       </Switch>
     </div>
