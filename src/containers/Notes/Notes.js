@@ -11,7 +11,6 @@ const Notes = ({ user, note, editNote }) => {
     axios
       .post("http://localhost:5000/notes", { googleId: user.googleId })
       .then((response) => {
-        // console.log(typeof response.data[0].lastEdited)
         setNotes(response.data)
       })
   }, [user])
@@ -27,8 +26,9 @@ const Notes = ({ user, note, editNote }) => {
         {notes.map((note, i) => {
           return (
             <Note
-              googleId={user.googleId}
               key={note.id}
+              googleId={user.googleId}
+              id={note.id}
               title={note.title}
               body={note.body}
               note={note}

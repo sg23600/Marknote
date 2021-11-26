@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 import "./Note.scss"
 
-const Note = ({ googleId, title, body, note, editNote }) => {
+const Note = ({ googleId, id, title, body, note, editNote }) => {
   // useEffect(() => {
   //   if (editNote) {
   //     console.log("rendering...")
@@ -15,7 +15,7 @@ const Note = ({ googleId, title, body, note, editNote }) => {
   // }, [googleId, title, body])
 
   const onClick = () => {
-    editNote(googleId, title, body)
+    editNote(googleId, title, body, id)
     console.log(note)
   }
 

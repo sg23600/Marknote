@@ -1,13 +1,13 @@
 import React, { useState } from "react"
-// import { useHistory } from "react-router-dom"
-// import axios from "axios"
-import { Link } from "react-router-dom"
+import axios from "axios"
+import { Link, useHistory } from "react-router-dom"
 import "./Editnote.scss"
 
 const Editnote = ({ note }) => {
-  // const history = useHistory()
+  const history = useHistory()
 
   const [form, setForm] = useState({
+    id: note.id,
     title: note.title,
     body: note.body,
   })
@@ -21,16 +21,17 @@ const Editnote = ({ note }) => {
 
   const onSubmit = () => {
     console.log(note)
-    // axios
-    //   .post("http://localhost:5000/notes/new", {
-    //     googleId: user.googleId,
-    //     title: form.title,
-    //     body: form.body,
-    //   })
-    //   .then(() => {
-    //     history.push("/notes")
-    //     console.log("new note added!")
-    //   })
+    axios
+      .post("http://localhost:5000/notes/edit", {
+        googleId: note.googleId,
+        id: form.id,
+        title: form.title,
+        body: form.body,
+      })
+      .then(() => {
+        history.push("/notes")
+        console.log("note edited!")
+      })
   }
 
   return (

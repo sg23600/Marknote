@@ -27,12 +27,14 @@ const App = () => {
     googleId: 0,
     title: "",
     body: "",
+    id: -1,
   })
-  const editNote = (a, b, c) => {
+  const editNote = (a, b, c, d) => {
     setNote({
       googleId: a,
       title: b,
       body: c,
+      id: d,
     })
   }
 
