@@ -11,9 +11,10 @@ const Notes = ({ user, note, editNote }) => {
     axios
       .post("http://localhost:5000/notes", { googleId: user.googleId })
       .then((response) => {
-        setNotes(response.data)
+        // if (notes !== response.data)
+          setNotes(response.data)
       })
-  }, [user, notes])
+  }, [user, notes.length])
   return (
     <div>
       <h1>{user.givenName}'s Notes</h1>
