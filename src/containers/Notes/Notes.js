@@ -13,7 +13,7 @@ const Notes = ({ user, note, editNote }) => {
       .then((response) => {
         setNotes(response.data)
       })
-  }, [user])
+  }, [user, notes])
   return (
     <div>
       <h1>{user.givenName}'s Notes</h1>

@@ -1,5 +1,7 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
+import axios from "axios"
+
 // import { Route, Switch } from "react-router-dom"
 // import Editnote from "../../containers/Editnote/Editnote"
 
@@ -13,10 +15,23 @@ const Note = ({ googleId, id, title, body, note, editNote }) => {
   //     // console.log(note)
   //   }
   // }, [googleId, title, body])
+  const history = useHistory()
 
-  const onClick = () => {
+  const onEdit = () => {
     editNote(googleId, title, body, id)
     console.log(note)
+  }
+
+  const onDelete = () => {
+    axios
+      .post("http://localhost:5000/notes/delete", {
+        googleId: googleId,
+        id: id,
+      })
+      .then((res) => {
+        history.push("/notes")
+        console.log("deleted")
+      })
   }
 
   return (
@@ -25,12 +40,15 @@ const Note = ({ googleId, id, title, body, note, editNote }) => {
         {/* edit note */}
 
         <Link exact to="/notes/edit">
-          <button onClick={onClick} className="btn edit">
+          <button onClick={onEdit} className="btn edit">
             <i className="fa fa-edit"></i>
           </button>
         </Link>
+
+        {/* delete note */}
+
         <Link exact to="/notes/">
-          <button className="btn del">
+          <button onClick={onDelete} className="btn del">
             <i className="fa fa-trash"></i>
           </button>
         </Link>
